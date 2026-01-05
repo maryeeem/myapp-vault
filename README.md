@@ -32,52 +32,59 @@ cd myapp-vault
 ```
 
 ## Installer les dépendances Python :
-
+```text
 pip install -r requirements.txt
-
+```
 
 ## Configurer les variables d'environnement :
-
+```text
 export VAULT_ADDR='http://localhost:8200'
 export VAULT_ROLE_ID='<votre-role-id>'
 export VAULT_SECRET_ID='<votre-secret-id>'
 
-
+```
 ## Astuce : tu peux copier .env.example en .env et remplir tes valeurs.
 
 ## Lancement de l'application
-
+```text
 python app.py
-
+```
 
 ## L'application Flask tourne sur le port 5000
 
-## Accessible sur http://127.0.0.1:5000 ou http://<votre-ip>:5000
-
+## Accessible sur 
+```text
+http://127.0.0.1:5000 ou http://<votre-ip>:5000
+```
 ## Endpoints disponibles
 ## Endpoint	Méthode	Description
-
+```text
 /health	GET	Vérifie la santé de l'application et retourne le nom et l'environnement
 /encrypt	POST	Chiffre les données envoyées en JSON { "data": "texte à chiffrer" }
 /decrypt	POST	Déchiffre le texte chiffré envoyé en JSON { "ciphertext": "vault:v1:..." }
 /users	GET	Récupère les 10 premiers utilisateurs de la base de données avec les credentials dynamiques
+```
 ## Exemple de test avec curl
 ## Vérifier la santé
+```text
 curl http://127.0.0.1:5000/health
-
+```
 ## Chiffrement
+```text
 curl -X POST http://127.0.0.1:5000/encrypt \
   -H "Content-Type: application/json" \
   -d '{"data": "informations sensibles"}'
-
+```
 ## Déchiffrement
+```text
 curl -X POST http://127.0.0.1:5000/decrypt \
   -H "Content-Type: application/json" \
   -d '{"ciphertext": "vault:v1:..."}'
-
+```
 ## Accéder aux utilisateurs
+```text
 curl http://127.0.0.1:5000/users
-
+```
 ## Technologies utilisées
 
 ```text 
